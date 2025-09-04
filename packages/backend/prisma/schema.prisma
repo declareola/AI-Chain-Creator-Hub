@@ -1,0 +1,205 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User model for wallet-connected users
+model User {
+  id                String   @id @default(cuid())
+  walletAddress     String   @unique
+  username          String?  @unique
+  email             String?  @unique
+  displayName       String?
+  bio               String?
+  avatarUrl         String?
+  isVerified        Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Relations
+  createdNFTs       NFT[]    @relation("CreatorNFTs")
+  ownedNFTs         NFT[]    @relation("OwnerNFTs")
+  listings          MarketplaceListing[]
+  tradingStrategies TradingStrategy[]
+  transactions      Transaction[]
+  notifications     Notification[]
+  aiGenerations     AIGeneration[]
+
+  @@map("users")
+}
+
+// NFT model for SeedNFTs
+model NFT {
+  id                String   @id @default(cuid())
+  tokenId           String   @unique
+  contractAddress   String
+  name              String
+  description       String?
+  imageUrl          String?
+  metadataUrl       String?
+  attributes        Json?
+  rarity            String?  // Common, Rare, Epic, Legendary
+  creatorAddress    String
+  ownerAddress      String
+  isListed          Boolean  @default(false)
+  royaltyPercentage Int      @default(5) // in basis points (500 = 5%)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Relations
+  creator           User     @relation("CreatorNFTs", fields: [creatorAddress], references: [walletAddress])
+  owner             User?    @relation("OwnerNFTs", fields: [ownerAddress], references: [walletAddress])
+  listing           MarketplaceListing?
+  aiGeneration      AIGeneration?
+
+  @@map("nfts")
+}
+
+// Marketplace listing model
+model MarketplaceListing {
+  id          String   @id @default(cuid())
+  nftId       String   @unique
+  sellerId    String
+  price       String   // Wei amount as string for precision
+  currency    String   @default("ETH") // ETH, VIBE, etc.
+  isActive    Boolean  @default(true)
+  expiresAt   DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  nft         NFT      @relation(fields: [nftId], references: [id])
+  seller      User     @relation(fields: [sellerId], references: [walletAddress])
+
+  @@map("marketplace_listings")
+}
+
+// Trading strategy model
+model TradingStrategy {
+  id              String   @id @default(cuid())
+  userId          String
+  name            String
+  description     String?
+  strategyType    String   // DCA, Grid, Momentum, etc.
+  config          Json     // Strategy-specific configuration
+  isActive        Boolean  @default(false)
+  riskLevel       String   @default("medium") // low, medium, high
+  maxSlippage     Float    @default(0.01) // 1%
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relations
+  user            User     @relation(fields: [userId], references: [walletAddress])
+  executions      StrategyExecution[]
+
+  @@map("trading_strategies")
+}
+
+// Strategy execution model
+model StrategyExecution {
+  id            String   @id @default(cuid())
+  strategyId    String
+  transactionHash String?
+  status        String   @default("pending") // pending, executing, completed, failed
+  executedAt    DateTime?
+  result        Json?    // Execution results and metrics
+  error         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relations
+  strategy      TradingStrategy @relation(fields: [strategyId], references: [id])
+
+  @@map("strategy_executions")
+}
+
+// Transaction model for all blockchain transactions
+model Transaction {
+  id              String   @id @default(cuid())
+  userId          String
+  transactionHash String   @unique
+  transactionType String   // mint, transfer, list, buy, trade, etc.
+  fromAddress     String
+  toAddress       String?
+  amount          String?  // Wei amount as string
+  currency        String   @default("ETH")
+  gasUsed         String?
+  gasPrice        String?
+  status          String   @default("pending") // pending, confirmed, failed
+  blockNumber     Int?
+  blockTimestamp  DateTime?
+  metadata        Json?    // Additional transaction data
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relations
+  user            User     @relation(fields: [userId], references: [walletAddress])
+
+  @@map("transactions")
+}
+
+// AI generation model
+model AIGeneration {
+  id          String   @id @default(cuid())
+  userId      String
+  prompt      String
+  model       String   // GPT-4, DALL-E, etc.
+  result      Json     // Generated content metadata
+  cost        Float?   // Cost in VIBE tokens
+  status      String   @default("completed") // pending, completed, failed
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  user        User     @relation(fields: [userId], references: [walletAddress])
+  nft         NFT?     @relation(fields: [nftId], references: [id])
+  nftId       String?  @unique
+
+  @@map("ai_generations")
+}
+
+// Notification model
+model Notification {
+  id          String   @id @default(cuid())
+  userId      String
+  type        String   // nft_sold, bid_received, strategy_executed, etc.
+  title       String
+  message     String
+  isRead      Boolean  @default(false)
+  metadata    Json?    // Additional notification data
+  createdAt   DateTime @default(now())
+
+  // Relations
+  user        User     @relation(fields: [userId], references: [walletAddress])
+
+  @@map("notifications")
+}
+
+// Analytics event model
+model AnalyticsEvent {
+  id          String   @id @default(cuid())
+  eventType   String   // page_view, button_click, nft_created, etc.
+  userId      String?
+  sessionId   String?
+  properties  Json?    // Event-specific properties
+  timestamp   DateTime @default(now())
+
+  @@map("analytics_events")
+}
+
+// VibeCoin balance model
+model VibeCoinBalance {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  balance     String   // Balance as string for precision
+  lastUpdated DateTime @default(now())
+
+  @@map("vibecoin_balances")
+}

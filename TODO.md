@@ -32,8 +32,8 @@
 - [x] Verify contracts on Etherscan/Base Explorer
 
 ## Phase 3: Backend Development
-- [ ] Set up Node.js/Express backend in packages/backend
-- [ ] Configure PostgreSQL database with Prisma ORM
+- [x] Set up Node.js/Express backend in packages/backend
+- [x] Configure PostgreSQL database with Prisma ORM
 - [ ] Implement authentication system (JWT)
 - [ ] Create API endpoints (/ai, /nft, /market, /trader, /vibe, /health)
 - [ ] Set up BullMQ for background job processing
