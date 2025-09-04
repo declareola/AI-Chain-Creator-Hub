@@ -202,7 +202,8 @@ describe("Marketplace", function () {
   describe("Platform Fee Management", function () {
     it("Should allow owner to update platform fee", async function () {
       await expect(marketplace.updatePlatformFee(500))
-        .to.not.be.reverted;
+        .to.emit(marketplace, "PlatformFeeUpdated")
+        .withArgs(500);
 
       expect(await marketplace.platformFee()).to.equal(500);
     });
@@ -233,7 +234,7 @@ describe("Marketplace", function () {
         ethers.ZeroAddress,
         ethers.parseEther("1")
       ))
-        .to.be.revertedWith("Pausable: paused");
+        .to.be.revertedWithCustomError(marketplace, "EnforcedPause");
     });
   });
 });

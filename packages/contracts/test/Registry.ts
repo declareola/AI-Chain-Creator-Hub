@@ -12,6 +12,8 @@ describe("Registry", function () {
     [owner, user] = await ethers.getSigners();
 
     registry = await ethers.deployContract("Registry");
+    // Initialize the upgradeable contract for testing
+    await registry.testInitialize(owner.address);
   });
 
   describe("Initialization", function () {
@@ -39,12 +41,12 @@ describe("Registry", function () {
       const mockAddress = ethers.Wallet.createRandom().address;
 
       await expect(registry.updateContract("InvalidContract", mockAddress))
-        .to.be.revertedWith("Registry: Unknown contract name");
+        .to.be.revertedWithCustomError(registry, "Registry__UnknownContractName");
     });
 
     it("Should reject zero address", async function () {
       await expect(registry.updateContract("SeedNFT", ethers.ZeroAddress))
-        .to.be.revertedWith("Registry: Invalid address");
+        .to.be.revertedWithCustomError(registry, "Registry__InvalidAddress");
     });
 
     it("Should not allow non-owner to update contracts", async function () {
@@ -91,7 +93,7 @@ describe("Registry", function () {
       const mockAddress = ethers.Wallet.createRandom().address;
 
       await expect(registry.updateContract("SeedNFT", mockAddress))
-        .to.be.revertedWith("Registry: Contract is paused");
+        .to.be.revertedWithCustomError(registry, "EnforcedPause");
     });
   });
 

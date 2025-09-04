@@ -1,4 +1,4 @@
-we// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.28;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
@@ -26,30 +26,30 @@ contract SeedNFT is ERC721, ERC2981, ERC721URIStorage, Ownable, Pausable {
 
     function mint(
         address to,
-        string memory tokenURI,
+        string memory _tokenURI,
         uint96 royaltyPercentage
     ) external onlyOwner whenNotPaused {
         require(to != address(0), "SeedNFT: Invalid recipient");
-        require(bytes(tokenURI).length > 0, "SeedNFT: Empty token URI");
+        require(bytes(_tokenURI).length > 0, "SeedNFT: Empty token URI");
         require(royaltyPercentage <= 10000, "SeedNFT: Royalty too high"); // Max 100%
 
         uint256 tokenId = _nextTokenId++;
         _mint(to, tokenId);
-        _setTokenURI(tokenId, tokenURI);
+        _setTokenURI(tokenId, _tokenURI);
         _setTokenRoyalty(tokenId, to, royaltyPercentage);
         totalSupply++;
 
-        emit NFTMinted(tokenId, to, tokenURI, royaltyPercentage);
+        emit NFTMinted(tokenId, to, _tokenURI, royaltyPercentage);
     }
 
     function batchMint(
         address[] memory recipients,
-        string[] memory tokenURIs,
+        string[] memory _tokenURIs,
         uint96[] memory royaltyPercentages
     ) external onlyOwner whenNotPaused returns (uint256[] memory) {
         require(
-            recipients.length == tokenURIs.length &&
-            tokenURIs.length == royaltyPercentages.length,
+            recipients.length == _tokenURIs.length &&
+            _tokenURIs.length == royaltyPercentages.length,
             "SeedNFT: Array length mismatch"
         );
         require(recipients.length <= 50, "SeedNFT: Batch too large");
@@ -58,16 +58,16 @@ contract SeedNFT is ERC721, ERC2981, ERC721URIStorage, Ownable, Pausable {
 
         for (uint256 i = 0; i < recipients.length; i++) {
             require(recipients[i] != address(0), "SeedNFT: Invalid recipient");
-            require(bytes(tokenURIs[i]).length > 0, "SeedNFT: Empty token URI");
+            require(bytes(_tokenURIs[i]).length > 0, "SeedNFT: Empty token URI");
             require(royaltyPercentages[i] <= 10000, "SeedNFT: Royalty too high");
 
             uint256 tokenId = _nextTokenId++;
             _mint(recipients[i], tokenId);
-            _setTokenURI(tokenId, tokenURIs[i]);
+            _setTokenURI(tokenId, _tokenURIs[i]);
             _setTokenRoyalty(tokenId, recipients[i], royaltyPercentages[i]);
             tokenIds[i] = tokenId;
 
-            emit NFTMinted(tokenId, recipients[i], tokenURIs[i], royaltyPercentages[i]);
+            emit NFTMinted(tokenId, recipients[i], _tokenURIs[i], royaltyPercentages[i]);
         }
 
         totalSupply += recipients.length;
@@ -103,7 +103,7 @@ contract SeedNFT is ERC721, ERC2981, ERC721URIStorage, Ownable, Pausable {
     function tokenURI(uint256 tokenId)
         public
         view
-        override(ERC721, ERC721URIStorage, ERC2981)
+        override(ERC721, ERC721URIStorage)
         returns (string memory)
     {
         return super.tokenURI(tokenId);
@@ -112,10 +112,10 @@ contract SeedNFT is ERC721, ERC2981, ERC721URIStorage, Ownable, Pausable {
     function supportsInterface(bytes4 interfaceId)
         public
         view
-        override(ERC721, ERC2981)
+        override(ERC721, ERC721URIStorage, ERC2981)
         returns (bool)
     {
-        return super.supportsInterface(interfaceId);
+        return ERC2981.supportsInterface(interfaceId) || super.supportsInterface(interfaceId);
     }
 
     function _update(address to, uint256 tokenId, address auth)

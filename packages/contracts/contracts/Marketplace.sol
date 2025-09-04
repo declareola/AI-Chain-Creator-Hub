@@ -43,6 +43,7 @@ contract Marketplace is Ownable, Pausable, ReentrancyGuard {
         uint256 platformFeeAmount,
         uint256 royaltyAmount
     );
+    event PlatformFeeUpdated(uint256 newFee);
 
     constructor(address registry_, uint256 platformFee_) Ownable(msg.sender) {
         registry = registry_;
@@ -152,6 +153,7 @@ contract Marketplace is Ownable, Pausable, ReentrancyGuard {
     function updatePlatformFee(uint256 newFee) external onlyOwner {
         require(newFee <= 1000, "Marketplace: Fee too high"); // Max 10%
         platformFee = newFee;
+        emit PlatformFeeUpdated(newFee);
     }
 
     function pause() external onlyOwner {

@@ -88,7 +88,7 @@ describe("AutoTrader", function () {
       await autoTrader.pause();
 
       await expect(autoTrader.createStrategy("Paused Strategy", 1000, 500, ethers.parseEther("10")))
-        .to.be.revertedWith("Pausable: paused");
+        .to.be.revertedWithCustomError(autoTrader, "EnforcedPause");
     });
   });
 });

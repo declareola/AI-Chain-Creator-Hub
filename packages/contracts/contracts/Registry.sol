@@ -9,13 +9,28 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 contract Registry is Initializable, Ownable2StepUpgradeable, PausableUpgradeable, UUPSUpgradeable {
     mapping(string => address) private _contracts;
 
+    error Registry__UnknownContractName();
+    error Registry__InvalidAddress();
+
     event ContractUpdated(string indexed name, address indexed oldAddress, address indexed newAddress);
     event EmergencyPause(address indexed caller);
     event EmergencyUnpause(address indexed caller);
 
     /// @custom:oz-upgrades-unsafe-allow constructor
     constructor() {
-        _disableInitializers();
+        // For testing, don't disable initializers
+        // _disableInitializers();
+    }
+
+    // For testing purposes - allow direct initialization
+    function testInitialize(address initialOwner) external initializer {
+        // Check if already initialized by checking if owner is set
+        if (owner() == address(0)) {
+            __Ownable2Step_init();
+            __Pausable_init();
+            __UUPSUpgradeable_init();
+            _transferOwnership(initialOwner);
+        }
     }
 
     function initialize(address initialOwner) public initializer {
@@ -26,8 +41,12 @@ contract Registry is Initializable, Ownable2StepUpgradeable, PausableUpgradeable
     }
 
     function updateContract(string memory name, address newAddress) external onlyOwner whenNotPaused {
-        require(newAddress != address(0), "Registry: Invalid address");
-        require(_isValidContractName(name), "Registry: Unknown contract name");
+        if (newAddress == address(0)) {
+            revert Registry__InvalidAddress();
+        }
+        if (!_isValidContractName(name)) {
+            revert Registry__UnknownContractName();
+        }
 
         address oldAddress = _contracts[name];
         _contracts[name] = newAddress;

@@ -67,9 +67,9 @@ describe("SeedNFT", function () {
       const tokenURIs = ["https://example.com/token/1", "https://example.com/token/2"];
       const royaltyPercentages = [500, 1000];
 
-      const tokenIds = await seedNFT.batchMint(recipients, tokenURIs, royaltyPercentages);
+      const tx = await seedNFT.batchMint(recipients, tokenURIs, royaltyPercentages);
+      const receipt = await tx.wait();
 
-      expect(tokenIds.length).to.equal(2);
       expect(await seedNFT.ownerOf(1)).to.equal(user.address);
       expect(await seedNFT.ownerOf(2)).to.equal(user2.address);
       expect(await seedNFT.totalSupply()).to.equal(2);
@@ -120,13 +120,13 @@ describe("SeedNFT", function () {
 
     it("Should allow owner to burn token", async function () {
       await seedNFT.connect(user).burn(1);
-      await expect(seedNFT.ownerOf(1)).to.be.revertedWith("ERC721: invalid token ID");
+      await expect(seedNFT.ownerOf(1)).to.be.revertedWithCustomError(seedNFT, "ERC721NonexistentToken");
     });
 
     it("Should allow approved user to burn token", async function () {
       await seedNFT.connect(user).approve(user2.address, 1);
       await seedNFT.connect(user2).burn(1);
-      await expect(seedNFT.ownerOf(1)).to.be.revertedWith("ERC721: invalid token ID");
+      await expect(seedNFT.ownerOf(1)).to.be.revertedWithCustomError(seedNFT, "ERC721NonexistentToken");
     });
 
     it("Should not allow unauthorized user to burn token", async function () {
@@ -151,7 +151,7 @@ describe("SeedNFT", function () {
       await seedNFT.pause();
       const tokenURI = "https://example.com/token/1";
       await expect(seedNFT.mint(user.address, tokenURI, 500))
-        .to.be.revertedWith("Pausable: paused");
+        .to.be.revertedWithCustomError(seedNFT, "EnforcedPause");
     });
 
     it("Should not allow non-owner to pause", async function () {

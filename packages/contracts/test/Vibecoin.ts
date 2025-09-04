@@ -63,12 +63,13 @@ describe("Vibecoin", function () {
       const initialBalance = await vibecoin.balanceOf(user.address);
       const initialReserve = await vibecoin.getReserveBalance();
 
+      const pricePerToken = (cost * 1000000000000000000n) / amount;
       await expect(vibecoin.connect(user).buy(amount, { value: cost }))
         .to.emit(vibecoin, "TokensPurchased")
-        .withArgs(user.address, cost, amount, cost / amount);
+        .withArgs(user.address, cost, amount, pricePerToken);
 
-      expect(await vibecoin.balanceOf(user.address)).to.equal(initialBalance + amount);
-      expect(await vibecoin.getReserveBalance()).to.equal(initialReserve + cost);
+      expect(await vibecoin.balanceOf(user.address)).to.equal(BigInt(initialBalance) + amount);
+      expect(await vibecoin.getReserveBalance()).to.equal(BigInt(initialReserve) + cost);
     });
 
     it("Should reject buying with insufficient ETH", async function () {
@@ -117,12 +118,13 @@ describe("Vibecoin", function () {
       const initialBalance = await vibecoin.balanceOf(user.address);
       const initialReserve = await vibecoin.getReserveBalance();
 
+      const pricePerToken = (value * 1000000000000000000n) / amount;
       await expect(vibecoin.connect(user).sell(amount))
         .to.emit(vibecoin, "TokensSold")
-        .withArgs(user.address, amount, value, value / amount);
+        .withArgs(user.address, amount, value, pricePerToken);
 
-      expect(await vibecoin.balanceOf(user.address)).to.equal(initialBalance - amount);
-      expect(await vibecoin.getReserveBalance()).to.equal(initialReserve - value);
+      expect(await vibecoin.balanceOf(user.address)).to.equal(BigInt(initialBalance) - amount);
+      expect(await vibecoin.getReserveBalance()).to.equal(BigInt(initialReserve) - value);
     });
 
     it("Should reject selling more than balance", async function () {
@@ -202,7 +204,7 @@ describe("Vibecoin", function () {
       const cost = await vibecoin.getBuyCost(amount);
 
       await expect(vibecoin.connect(user).buy(amount, { value: cost }))
-        .to.be.revertedWith("Pausable: paused");
+        .to.be.revertedWithCustomError(vibecoin, "EnforcedPause");
     });
   });
 });
