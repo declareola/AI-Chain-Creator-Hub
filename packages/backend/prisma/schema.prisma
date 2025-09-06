@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
 // User model for wallet-connected users
@@ -19,6 +19,7 @@ model User {
   displayName       String?
   bio               String?
   avatarUrl         String?
+  nonce             String   @default(uuid()) @unique
   isVerified        Boolean  @default(false)
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
@@ -151,9 +152,9 @@ model AIGeneration {
   userId      String
   prompt      String
   model       String   // GPT-4, DALL-E, etc.
-  result      Json     // Generated content metadata
+  result      Json?    // Generated content metadata
   cost        Float?   // Cost in VIBE tokens
-  status      String   @default("completed") // pending, completed, failed
+  status      String   @default("pending") // pending, completed, failed
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 

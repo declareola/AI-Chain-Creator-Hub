@@ -1,5 +1,12 @@
 import express from 'express';
 import { Request, Response } from 'express';
+import authRoutes from './auth';
+import nftRoutes from './nft';
+import marketRoutes from './market';
+import traderRoutes from './trader';
+import vibeRoutes from './vibe';
+import aiRoutes from './ai';
+import notificationRoutes from './notification';
 
 const router = express.Router();
 
@@ -12,15 +19,26 @@ router.get('/api/health', (req: Request, res: Response) => {
   });
 });
 
+// Auth Routes
+router.use('/', authRoutes);
+
 // NFT Routes
-router.get('/api/nfts', (req: Request, res: Response) => {
-  res.json({ message: 'NFT routes will be implemented' });
-});
+router.use('/', nftRoutes);
 
 // Marketplace Routes
-router.get('/api/marketplace', (req: Request, res: Response) => {
-  res.json({ message: 'Marketplace routes will be implemented' });
-});
+router.use('/', marketRoutes);
+
+// Trader Routes
+router.use('/', traderRoutes);
+
+// Vibe Routes
+router.use('/', vibeRoutes);
+
+// AI Routes
+router.use('/', aiRoutes);
+
+// Notification Routes
+router.use('/api/notifications', notificationRoutes);
 
 // User Routes
 router.get('/api/users', (req: Request, res: Response) => {

@@ -86,6 +86,8 @@ process.on('SIGINT', async () => {
   });
 });
 
-startServer();
+if (require.main === module) {
+  startServer();
+}
 
 export default app;
