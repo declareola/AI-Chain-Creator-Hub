@@ -9,9 +9,9 @@ import { authenticateJWT } from '../middleware/auth';
 
 const router = express.Router();
 
-router.get('/nfts', getNFTs);
-router.get('/nfts/:id', getNFTById);
-router.post('/nfts', authenticateJWT, createNFT);
 router.get('/nfts/user', authenticateJWT, getUserNFTs);
+router.get('/nfts/:id', getNFTById);
+router.get('/nfts', getNFTs);
+router.post('/nfts', authenticateJWT, createNFT);
 
 export default router;

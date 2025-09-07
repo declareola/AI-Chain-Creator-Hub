@@ -47,10 +47,10 @@ beforeEach(async () => {
   // Clean up database before each test
   await prisma.aIGeneration.deleteMany();
   await prisma.marketplaceListing.deleteMany();
-  await prisma.tradingStrategy.deleteMany();
   await prisma.strategyExecution.deleteMany();
+  await prisma.tradingStrategy.deleteMany();
   await prisma.transaction.deleteMany();
   await prisma.vibeCoinBalance.deleteMany();
   await prisma.nFT.deleteMany();
-  await prisma.user.deleteMany();
+  // Note: Not deleting users here as tests manage user creation/cleanup
 });

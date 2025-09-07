@@ -13,8 +13,10 @@ describe('NFT Endpoints', () => {
 
   beforeAll(async () => {
     // Create a test user
-    const user = await prisma.user.create({
-      data: { walletAddress },
+    const user = await prisma.user.upsert({
+      where: { walletAddress },
+      update: {},
+      create: { walletAddress },
     });
     userId = user.id;
     console.log('Created user:', user);
@@ -72,11 +74,27 @@ describe('NFT Endpoints', () => {
       .send(nftData);
 
     expect(res.statusCode).toEqual(201);
-    expect(res.body).toHaveProperty('id');
-    expect(res.body.name).toEqual(nftData.name);
+    expect(res.body.nft).toHaveProperty('id');
+    expect(res.body.nft.name).toEqual(nftData.name);
   });
 
   it('should get user NFTs', async () => {
+    // Create an NFT first
+    const nftData = {
+      tokenId: '2',
+      contractAddress: '0xabcdef1234567890abcdef1234567890abcdef12',
+      name: 'Test NFT 2',
+      description: 'A test NFT for user query',
+      imageUrl: 'https://example.com/image2.png',
+      creatorAddress: walletAddress,
+      ownerAddress: walletAddress,
+    };
+
+    await request(app)
+      .post('/api/nfts')
+      .set('Authorization', `Bearer ${token}`)
+      .send(nftData);
+
     const res = await request(app)
       .get('/api/nfts/user')
       .set('Authorization', `Bearer ${token}`);
@@ -84,5 +102,6 @@ describe('NFT Endpoints', () => {
     expect(res.statusCode).toEqual(200);
     expect(Array.isArray(res.body.nfts)).toBe(true);
     expect(res.body.nfts.length).toEqual(1);
+    expect(res.body.nfts[0].name).toEqual(nftData.name);
   });
 });
