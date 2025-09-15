@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Manrope%3Awght%40400%3B500%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-color: #53d22d;
+      }
+    </style>
+</head>
+<body class="bg-gray-900">
+<div class="relative flex size-full min-h-screen flex-col bg-[#111827] dark group/design-root overflow-x-hidden" style="--select-button-svg: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724px%27 height=%2724px%27 fill=%27rgb(156, 163, 175)%27 viewBox=%270 0 256 256%27%3e%3cpath d=%27M181.66,170.34a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-48-48a8,8,0,0,1,11.32-11.32L128,212.69l42.34-42.35A8,8,0,0,1,181.66,170.34Zm-96-84.68L128,43.31l42.34,42.35a8,8,0,0,0,11.32-11.32l-48-48a8,8,0,0,0-11.32,0l-48,48A8,8,0,0,0,85.66,85.66Z%27%3e%3c/path%3e%3c/svg%3e'); font-family: Manrope, &quot;Noto Sans&quot;, sans-serif;">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-800 px-10 py-4">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-white">
+<svg class="size-8 text-[var(--primary-color)]" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+<h2 class="text-white text-xl font-bold tracking-[-0.015em]">NovaChain</h2>
+</div>
+<nav class="flex items-center gap-6">
+<a class="text-gray-300 hover:text-white text-base font-medium" href="#">Home</a>
+<a class="text-gray-300 hover:text-white text-base font-medium" href="#">NFTs</a>
+<a class="text-gray-300 hover:text-white text-base font-medium" href="#">DeFi</a>
+<a class="text-gray-300 hover:text-white text-base font-medium" href="#">Marketplace</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"> search </span>
+<input class="form-input w-full min-w-0 resize-none overflow-hidden rounded-full border border-gray-700 bg-gray-800 text-white placeholder-gray-400 focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)] h-10 pl-10 pr-4 text-base" placeholder="Search..." value=""/>
+</div>
+<button class="flex size-10 items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white">
+<span class="material-symbols-outlined text-2xl"> notifications </span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBHRqtQUY1o1LPTr0rwoNudei6u6s5nPllxtVtrEYJIS5W9FbPnWwHsuxjfaF6b8pKw5rMe6ss2HB-12MoP3R0k0YamhX0NIHz2w2Tagkj09j5vKwCNDfE0-fSVBH1px36A3KoR2hqYYwVaC9OOVruFD5ABSXtTEBPnF-0IaLVeI3g_4JGS-uj7MzAQICAQZnNm72xzrQ7c58c07Ai5KoXp_384s-ORu_ePaabaM5c54-yFLwudDhqrj1iIYl_KG5hYKwDVLqE4aAXo");'></div>
+</div>
+</header>
+<main class="flex flex-1 justify-center p-8">
+<div class="w-full max-w-7xl">
+<div class="mb-8">
+<h1 class="text-white text-4xl font-bold tracking-tight">Trade Simulator</h1>
+<p class="text-gray-400 text-lg mt-2">Analyze market pairs and simulate trades with AI-generated signals.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 space-y-8">
+<div class="bg-gray-800 rounded-2xl p-6">
+<h3 class="text-white text-xl font-bold mb-4">Market Data Visualization</h3>
+<div class="flex items-start justify-between mb-4">
+<div>
+<p class="text-gray-400 text-sm font-medium">BTC/ETH Price History</p>
+<p class="text-white text-4xl font-bold mt-1">$1,850.75</p>
+<div class="flex items-center gap-2 mt-2">
+<p class="text-green-400 text-base font-medium">+2.5%</p>
+<p class="text-gray-400 text-sm">Last 30 Days</p>
+</div>
+</div>
+<div class="flex gap-2 rounded-full bg-gray-700 p-1">
+<button class="text-gray-300 text-sm font-bold tracking-wider px-3 py-1 rounded-full hover:bg-gray-600">1D</button>
+<button class="text-gray-300 text-sm font-bold tracking-wider px-3 py-1 rounded-full hover:bg-gray-600">7D</button>
+<button class="text-white bg-gray-600 text-sm font-bold tracking-wider px-3 py-1 rounded-full">1M</button>
+<button class="text-gray-300 text-sm font-bold tracking-wider px-3 py-1 rounded-full hover:bg-gray-600">1Y</button>
+</div>
+</div>
+<div class="h-80">
+<svg fill="none" height="100%" preserveAspectRatio="none" viewBox="0 0 475 320" width="100%" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 218C36.3077 218 36.3077 42 72.6154 42C108.923 42 108.923 186 145.231 186C181.538 186 181.538 66 217.846 66C254.154 66 254.154 90 290.462 90C326.769 90 326.769 242 363.077 242C399.385 242 399.385 2 435.692 2C472 2 472 162 472 162" stroke="var(--primary-color)" stroke-linecap="round" stroke-width="4"></path>
+<path d="M0 218C36.3077 218 36.3077 42 72.6154 42C108.923 42 108.923 186 145.231 186C181.538 186 181.538 66 217.846 66C254.154 66 254.154 90 290.462 90C326.769 90 326.769 242 363.077 242C399.385 242 399.385 2 435.692 2C472 2 472 162 472 162V320H0V218Z" fill="url(#paint0_linear_chart)"></path>
+<defs>
+<linearGradient gradientUnits="userSpaceOnUse" id="paint0_linear_chart" x1="236" x2="236" y1="2" y2="320">
+<stop stop-color="var(--primary-color)" stop-opacity="0.3"></stop>
+<stop offset="1" stop-color="var(--primary-color)" stop-opacity="0"></stop>
+</linearGradient>
+</defs>
+</svg>
+</div>
+</div>
+<div class="bg-gray-800 rounded-2xl p-6">
+<h3 class="text-white text-xl font-bold mb-4">AI-Generated Signals</h3>
+<div class="space-y-4">
+<div class="flex items-center gap-4 rounded-xl bg-gray-700 p-4">
+<div class="flex items-center justify-center rounded-full bg-green-500/20 shrink-0 size-12">
+<span class="material-symbols-outlined text-green-400 text-3xl"> trending_up </span>
+</div>
+<div class="flex-1">
+<p class="text-white text-lg font-semibold">Buy Signal</p>
+<p class="text-gray-400 text-sm">Potential upward trend identified.</p>
+</div>
+<div class="text-right">
+<p class="text-gray-300 text-sm">Confidence</p>
+<p class="text-green-400 text-lg font-bold">85%</p>
+</div>
+</div>
+<div class="flex items-center gap-4 rounded-xl bg-gray-700 p-4">
+<div class="flex items-center justify-center rounded-full bg-red-500/20 shrink-0 size-12">
+<span class="material-symbols-outlined text-red-400 text-3xl"> trending_down </span>
+</div>
+<div class="flex-1">
+<p class="text-white text-lg font-semibold">Sell Signal</p>
+<p class="text-gray-400 text-sm">Potential downward trend identified.</p>
+</div>
+<div class="text-right">
+<p class="text-gray-300 text-sm">Confidence</p>
+<p class="text-red-400 text-lg font-bold">92%</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="space-y-8">
+<div class="bg-gray-800 rounded-2xl p-6">
+<h3 class="text-white text-xl font-bold mb-4">Simulation Setup</h3>
+<div class="space-y-6">
+<div>
+<label class="text-gray-300 text-sm font-medium mb-2 block" for="pair-select">Market Pair</label>
+<select class="form-select w-full rounded-xl border-gray-700 bg-gray-900 text-white focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)] h-12 bg-[image:--select-button-svg] px-4" id="pair-select">
+<option>BTC/ETH</option>
+<option>SOL/USDC</option>
+<option>ADA/USDT</option>
+</select>
+</div>
+<div>
+<label class="text-gray-300 text-sm font-medium mb-2 block" for="interval-select">Lookback Interval</label>
+<select class="form-select w-full rounded-xl border-gray-700 bg-gray-900 text-white focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)] h-12 bg-[image:--select-button-svg] px-4" id="interval-select">
+<option>Last 30 Days</option>
+<option>Last 90 Days</option>
+<option>Last Year</option>
+</select>
+</div>
+<button class="flex w-full items-center justify-center rounded-full h-12 px-6 bg-[var(--primary-color)] text-gray-900 text-base font-bold hover:bg-green-400 transition-colors">
+<span class="material-symbols-outlined mr-2"> play_circle </span>
+<span class="truncate">Start Simulation</span>
+</button>
+</div>
+</div>
+<div class="bg-gray-800 rounded-2xl p-6">
+<h3 class="text-white text-xl font-bold mb-4">Simulation Results</h3>
+<div class="space-y-4 text-center">
+<p class="text-gray-400">Run a simulation to see results.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>

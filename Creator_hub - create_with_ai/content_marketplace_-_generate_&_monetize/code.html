@@ -1,0 +1,102 @@
+<html><head>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Manrope%3Awght%40400%3B500%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<meta charset="utf-8"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body class="bg-[#111810]">
+<div class="relative flex size-full min-h-screen flex-col bg-[#111810] dark group/design-root overflow-x-hidden" style='font-family: Manrope, "Noto Sans", sans-serif;'>
+<div class="layout-container flex h-full grow flex-col">
+<div class="flex flex-1">
+<aside class="flex flex-col w-64 bg-[#162013] p-6 border-r border-[#2e4328]">
+<div class="flex flex-col gap-8">
+<h1 class="text-white text-2xl font-bold leading-normal">VibeChain</h1>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white hover:bg-[#21301c] rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-sm font-medium">Home</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-white bg-[#2e4328] rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">add_box</span>
+<span class="text-sm font-medium">Create</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white hover:bg-[#21301c] rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="text-sm font-medium">Marketplace</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white hover:bg-[#21301c] rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-sm font-medium">My Content</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-white/70 hover:text-white hover:bg-[#21301c] rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+</div>
+</aside>
+<main class="flex-1 p-8">
+<div class="max-w-4xl mx-auto">
+<h2 class="text-white text-4xl font-bold leading-tight mb-8">Create New Content</h2>
+<div class="mb-8">
+<div class="flex border-b border-[#426039]">
+<a class="flex flex-col items-center justify-center border-b-2 border-[#54d22d] text-white py-3 px-6" href="#">
+<p class="text-sm font-bold tracking-wide">Blog Post</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-[#a2c398] hover:text-white py-3 px-6 transition-colors" href="#">
+<p class="text-sm font-bold tracking-wide">Music Description</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-[#a2c398] hover:text-white py-3 px-6 transition-colors" href="#">
+<p class="text-sm font-bold tracking-wide">Video Description</p>
+</a>
+</div>
+</div>
+<div class="space-y-10">
+<div class="space-y-4">
+<label class="block">
+<span class="text-white text-lg font-semibold mb-2 block">AI Prompt</span>
+<textarea class="form-textarea block w-full resize-none rounded-xl text-white bg-[#21301c] border border-[#426039] focus:border-[#54d22d] focus:ring focus:ring-[#54d22d]/50 h-36 p-4 placeholder:text-[#a2c398]/70 text-base font-normal leading-normal" placeholder="Enter your prompt for AI generation..."></textarea>
+</label>
+<button class="flex items-center justify-center gap-2 min-w-[84px] cursor-pointer rounded-full h-12 px-6 bg-[#54d22d] text-[#162013] text-base font-bold leading-normal tracking-wide shadow-lg hover:bg-opacity-90 transition-all">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span>Generate Content</span>
+</button>
+</div>
+<div class="space-y-4">
+<h3 class="text-white text-lg font-semibold">Preview</h3>
+<label class="block">
+<span class="text-white text-base font-medium mb-2 block">Generated Content</span>
+<textarea class="form-textarea block w-full resize-none rounded-xl text-white bg-[#21301c] border border-[#426039] h-48 p-4 placeholder:text-[#a2c398]/70 text-base font-normal leading-normal" placeholder="Your generated content will appear here..."></textarea>
+</label>
+</div>
+<div class="space-y-6">
+<h3 class="text-white text-xl font-bold">Listing Details</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<label class="flex flex-col gap-2">
+<span class="text-white font-medium">Price (Vibecoins)</span>
+<input class="form-input w-full rounded-xl text-white bg-[#21301c] border border-[#426039] focus:border-[#54d22d] focus:ring focus:ring-[#54d22d]/50 h-14 p-4 placeholder:text-[#a2c398]/70 text-base font-normal" placeholder="e.g., 100" type="number"/>
+</label>
+<div class="flex flex-col justify-end">
+<button class="flex items-center justify-center gap-2 min-w-[84px] cursor-pointer rounded-full h-14 px-6 bg-[#2e4328] text-white text-base font-bold leading-normal tracking-wide hover:bg-opacity-90 transition-colors">
+<span class="material-symbols-outlined">upload</span>
+<span>Upload to IPFS</span>
+</button>
+</div>
+</div>
+</div>
+<div class="pt-6 border-t border-[#2e4328] flex justify-end">
+<button class="flex min-w-[84px] max-w-sm w-full md:w-auto cursor-pointer items-center justify-center rounded-full h-14 px-8 bg-[#54d22d] text-[#162013] text-lg font-bold leading-normal tracking-wide shadow-lg hover:bg-opacity-90 transition-all">
+<span>List Content for Sale</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</div>
+
+</body></html>
