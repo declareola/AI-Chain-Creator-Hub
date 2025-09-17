@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Manrope%3Awght%40400%3B500%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-color: #53d22d;
+      }
+    </style>
+</head>
+<body class="relative flex size-full min-h-screen flex-col bg-[#111812] dark group/design-root overflow-x-hidden" style='font-family: Manrope, "Noto Sans", sans-serif'>
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#2a342b] px-10 py-4">
+<div class="flex items-center gap-4 text-white">
+<div class="size-8 text-[var(--primary-color)]">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">
+            Artify
+          </h2>
+</div>
+<nav class="flex items-center gap-8 text-sm font-medium text-gray-300">
+<a class="transition-colors hover:text-white" href="#">Create</a>
+<a class="transition-colors hover:text-white" href="#">Marketplace</a>
+<a class="transition-colors hover:text-white" href="#">DeFi</a>
+<a class="transition-colors hover:text-white" href="#">Community</a>
+</nav>
+<div class="flex flex-1 justify-end gap-4">
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-[#2a342b] text-gray-300 transition-colors hover:bg-[#384539] hover:text-white">
+<span class="material-symbols-outlined text-2xl"> notifications </span>
+</button>
+<button>
+<div class="size-10 rounded-full bg-cover bg-center bg-no-repeat ring-2 ring-transparent transition-all hover:ring-[var(--primary-color)]" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDKJjYilGZo1CYsEzN2jeI_qJ_F0f6O-Xu_c3viQAtp0KLtEbH8C4-_zSmpM8io-qOHOVEk4zo-gQkT4Jpl_AP5OZJK_L-mn-aWK4_HkhPs_3bOJ86Cf_2Wa9PMUDAV4FPZn8ViG5FpwstVoowya12BAr6bjmrvGqnVRA1b1exzAwXFJwvQrMPh_umj7XwXXmq5WNCMZE9uupx1gQH4LvGwXIm_YAckv1Y0sH0tf7txbFGtdULuzyQdvBwZgS7kVuU6MuezhCnHfHm0");'></div>
+</button>
+</div>
+</header>
+<main class="flex flex-1 justify-center py-12">
+<div class="w-full max-w-6xl px-4">
+<div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+<div class="flex flex-col gap-8">
+<div>
+<h1 class="text-4xl font-bold tracking-tighter text-white sm:text-5xl">
+                  Create your NFT
+                </h1>
+<p class="mt-4 text-lg text-gray-400">
+                  Unleash your creativity with our AI-powered NFT generator.
+                  Describe your vision and watch it come to life.
+                </p>
+</div>
+<div class="space-y-6">
+<label class="flex flex-col gap-2">
+<span class="text-base font-medium text-white">AI Art Prompt</span>
+<textarea class="form-textarea min-h-36 w-full flex-1 resize-none rounded-xl border-none bg-[#2a342b] p-4 text-base text-white placeholder:text-gray-500 focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)]" placeholder="e.g., 'A hyperrealistic portrait of a cyborg cat in a neon-lit cyberpunk city'"></textarea>
+</label>
+<button class="flex h-12 w-full items-center justify-center rounded-full bg-[var(--primary-color)] px-6 text-base font-bold text-[#111812] transition-transform hover:scale-105">
+<span class="material-symbols-outlined mr-2"> auto_awesome </span>
+<span class="truncate">Generate Art &amp; Metadata</span>
+</button>
+</div>
+<div class="space-y-6">
+<div>
+<h2 class="text-2xl font-bold tracking-tight text-white">Preview &amp; Refine</h2>
+<p class="mt-2 text-gray-400">Your generated art will appear below. You can then edit the details before minting.</p>
+</div>
+<div class="aspect-square w-full overflow-hidden rounded-2xl bg-[#2a342b]">
+<div class="h-full w-full bg-cover bg-center bg-no-repeat" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuApFNMjuColPW9P7Iomfd-2dBNY2vCwcEuAlscg1c2JS6ZW47r02fhdk_AwiZeVH7G-PTDKq6-yXvuZUNyJamquH-fj4y9eRrtUNoAZ_aghsif12t1EX0F4qJKxp79ZuR0sdji0BAlINVdIQpqAlEC7Mr7vfPa7cGosm8kXNMFr5uUkXGjBJ5wkTrrTGCKY57JJF4O1PeViT2ieG8xMYByKy2CSqu3uvFy-muG73XmSGU4hFgnf_JCCYXQixcr6QohArSa4gLCn1Dr3");'></div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6 rounded-2xl bg-[#1c241d] p-8">
+<h2 class="text-2xl font-bold tracking-tight text-white">
+                NFT Details
+              </h2>
+<label class="flex flex-col gap-2">
+<span class="text-base font-medium text-white">NFT Title</span>
+<input class="form-input h-14 w-full flex-1 resize-none rounded-xl border-none bg-[#2a342b] p-4 text-base text-white placeholder:text-gray-500 focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)]" value="Cyberpunk Cat #42"/>
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-base font-medium text-white">Description</span>
+<textarea class="form-textarea min-h-36 w-full flex-1 resize-none rounded-xl border-none bg-[#2a342b] p-4 text-base text-white placeholder:text-gray-500 focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)]">A one-of-a-kind cyborg feline, prowling the neon-drenched alleys of a futuristic metropolis. Generated by Artify AI.</textarea>
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-base font-medium text-white">Royalties (%)</span>
+<input class="form-input h-14 w-full flex-1 resize-none rounded-xl border-none bg-[#2a342b] p-4 text-base text-white placeholder:text-gray-500 focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)]" type="number" value="10"/>
+</label>
+<div class="flex flex-col gap-2">
+<h3 class="text-base font-medium text-white">Metadata JSON</h3>
+<div class="relative">
+<textarea class="form-textarea h-48 w-full flex-1 resize-none rounded-xl border-none bg-[#2a342b] p-4 font-mono text-sm text-gray-300 focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)]" readonly="">{
+  "name": "Cyberpunk Cat #42",
+  "description": "A one-of-a-kind cyborg feline, prowling the neon-drenched alleys of a futuristic metropolis. Generated by Artify AI.",
+  "image": "ipfs://...",
+  "attributes": [
+    { "trait_type": "Background", "value": "Neon City" },
+    { "trait_type": "Species", "value": "Cyborg Cat" }
+  ]
+}</textarea>
+<button class="absolute top-3 right-3 text-gray-400 hover:text-white">
+<span class="material-symbols-outlined">
+                          content_copy
+                      </span>
+</button>
+</div>
+</div>
+<button class="mt-4 flex h-14 w-full items-center justify-center rounded-full bg-[var(--primary-color)] px-5 text-lg font-bold text-[#111812] transition-transform hover:scale-105">
+<span class="truncate">Mint NFT</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>
