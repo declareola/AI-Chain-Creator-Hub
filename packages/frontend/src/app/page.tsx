@@ -5,13 +5,19 @@ import { WalletConnect } from '@/components/wallet-connect'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { useAccount } from 'wagmi'
+import AnimatedBackground from '@/components/3d/AnimatedBackground'
+import ParticleSystem from '@/components/3d/ParticleSystem'
+import { motion } from 'framer-motion'
 
 export default function Home() {
   const { isConnected } = useAccount()
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50">
-      <div className="container mx-auto px-4 py-16">
+    <main className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 relative overflow-hidden">
+      <AnimatedBackground />
+      <ParticleSystem />
+
+      <div className="container mx-auto px-4 py-16 relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold text-gray-900 mb-4">
@@ -71,9 +77,11 @@ export default function Home() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <Button variant="outline" className="w-full" size="lg" disabled>
-                  Coming Soon
-                </Button>
+                <Link href="/dashboard">
+                  <Button className="w-full" size="lg">
+                    View Dashboard
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           </div>
@@ -112,6 +120,106 @@ export default function Home() {
               </p>
             </div>
           </div>
+        </div>
+
+        {/* New Content Sections */}
+
+        {/* How It Works Section */}
+        <div className="max-w-4xl mx-auto mt-16">
+          <h2 className="text-3xl font-bold text-center mb-8">How It Works</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div>
+              <div className="text-5xl mb-4">1️⃣</div>
+              <h3 className="text-xl font-semibold mb-2">Connect Your Wallet</h3>
+              <p className="text-gray-600">
+                Securely connect your crypto wallet to start creating and trading NFTs.
+              </p>
+            </div>
+            <div>
+              <div className="text-5xl mb-4">2️⃣</div>
+              <h3 className="text-xl font-semibold mb-2">Create AI Art</h3>
+              <p className="text-gray-600">
+                Use our AI tools to generate unique digital artwork from your ideas.
+              </p>
+            </div>
+            <div>
+              <div className="text-5xl mb-4">3️⃣</div>
+              <h3 className="text-xl font-semibold mb-2">Mint & Trade</h3>
+              <p className="text-gray-600">
+                Mint your creations as NFTs and trade them on our secure marketplace.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Featured Creations Section */}
+        <div className="max-w-4xl mx-auto mt-16">
+          <h2 className="text-3xl font-bold text-center mb-8">Featured Creations</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Example cards - replace with dynamic content if available */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Dreamscape #1</CardTitle>
+                <CardDescription>AI-generated surreal landscape</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <img src="/featured1.jpg" alt="Dreamscape #1" className="rounded-md" />
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>Abstract Vision</CardTitle>
+                <CardDescription>Colorful abstract AI art</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <img src="/featured2.jpg" alt="Abstract Vision" className="rounded-md" />
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>Futuristic City</CardTitle>
+                <CardDescription>AI art of a futuristic metropolis</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <img src="/featured3.jpg" alt="Futuristic City" className="rounded-md" />
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* Community Stats Section */}
+        <div className="max-w-4xl mx-auto mt-16 bg-white bg-opacity-70 rounded-lg p-8 text-center shadow-md">
+          <h2 className="text-3xl font-bold mb-8">Community Stats</h2>
+          <div className="grid grid-cols-3 gap-8">
+            <div>
+              <div className="text-4xl font-extrabold text-purple-700">1,234</div>
+              <div className="text-gray-600">Users</div>
+            </div>
+            <div>
+              <div className="text-4xl font-extrabold text-purple-700">567</div>
+              <div className="text-gray-600">NFTs Created</div>
+            </div>
+            <div>
+              <div className="text-4xl font-extrabold text-purple-700">890</div>
+              <div className="text-gray-600">Trades</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Get Started Section */}
+        <div className="max-w-4xl mx-auto mt-16 text-center">
+          <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+          <p className="text-gray-700 mb-8 max-w-xl mx-auto">
+            Connect your wallet and start creating your own AI-generated NFTs today!
+          </p>
+          <WalletConnect />
+          {isConnected && (
+            <Link href="/create">
+              <Button size="lg" className="mt-6">
+                Start Creating Now
+              </Button>
+            </Link>
+          )}
         </div>
 
         {/* Footer */}

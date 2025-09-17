@@ -103,3 +103,61 @@
 {"level":"error","message":"Error creating channel: Push SDK Error: Contract : createChannelWithPUSH : Error: {\"code\":\"UNSUPPORTED_OPERATION\",\"operation\":\"call\",\"shortMessage\":\"missing provider\"}","service":"ai-chain-creator-hub-backend","stack":"Error: Push SDK Error: Contract : createChannelWithPUSH : Error: {\"code\":\"UNSUPPORTED_OPERATION\",\"operation\":\"call\",\"shortMessage\":\"missing provider\"}\n    at Channel.<anonymous> (/workspaces/AI-Chain-Creator-Hub/packages/backend/packages/restapi/src/lib/pushNotification/channel.ts:271:13)\n    at Generator.throw (<anonymous>)\n    at rejected (/workspaces/AI-Chain-Creator-Hub/packages/backend/node_modules/tslib/tslib.js:168:69)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-09-06T04:32:40.260Z"}
 {"level":"error","message":"Error creating channel: Push SDK Error: Contract : createChannelWithPUSH : Error: {\"code\":\"UNSUPPORTED_OPERATION\",\"operation\":\"call\",\"shortMessage\":\"missing provider\"}","service":"ai-chain-creator-hub-backend","stack":"Error: Push SDK Error: Contract : createChannelWithPUSH : Error: {\"code\":\"UNSUPPORTED_OPERATION\",\"operation\":\"call\",\"shortMessage\":\"missing provider\"}\n    at Channel.<anonymous> (/workspaces/AI-Chain-Creator-Hub/packages/backend/packages/restapi/src/lib/pushNotification/channel.ts:271:13)\n    at Generator.throw (<anonymous>)\n    at rejected (/workspaces/AI-Chain-Creator-Hub/packages/backend/node_modules/tslib/tslib.js:168:69)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-09-06T04:32:40.261Z"}
 {"level":"info","message":"Subscribed to channel: 0xchanneladdress1234567890","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-06T04:32:40.610Z"}
+{"level":"info","message":"Database info:","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-16T09:11:19.345Z"}
+{"level":"info","message":"Database connected successfully","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-16T09:11:19.534Z"}
+{"level":"info","message":"Server running on port 5000","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-16T09:11:19.536Z"}
+{"level":"info","message":"Environment: development","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-16T09:11:19.537Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-16T09:22:28.968Z"}
+{"level":"info","message":"Database disconnected successfully","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-16T09:22:28.977Z"}
+{"level":"info","message":"Process terminated","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-16T09:22:28.979Z"}
+{"level":"info","message":"Database info:","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-16T11:20:31.760Z"}
+{"level":"info","message":"Database connected successfully","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-16T11:20:31.943Z"}
+{"level":"info","message":"Server running on port 5000","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-16T11:20:31.945Z"}
+{"level":"info","message":"Environment: development","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-16T11:20:31.946Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-16T12:01:14.090Z"}
+{"level":"info","message":"Database disconnected successfully","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-16T12:01:14.097Z"}
+{"level":"info","message":"Process terminated","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-16T12:01:14.098Z"}
+{"level":"info","message":"Database info:","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-16T15:05:20.067Z"}
+{"level":"info","message":"Database connected successfully","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-16T15:05:20.071Z"}
+{"level":"info","message":"Server running on port 5000","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-16T15:05:20.073Z"}
+{"level":"info","message":"Environment: development","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-16T15:05:20.073Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-16T15:14:49.011Z"}
+{"level":"info","message":"Database disconnected successfully","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-16T15:14:49.021Z"}
+{"level":"info","message":"Process terminated","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-16T15:14:49.023Z"}
+{"level":"info","message":"Database info:","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T11:02:52.026Z"}
+{"level":"info","message":"Database connected successfully","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T11:02:52.174Z"}
+{"level":"info","message":"Server running on port 5000","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T11:02:52.176Z"}
+{"level":"info","message":"Environment: development","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T11:02:52.176Z"}
+{"level":"info","message":"Database info:","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T11:23:08.505Z"}
+{"level":"info","message":"Database connected successfully","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T11:23:08.536Z"}
+{"level":"info","message":"SIGTERM received, shutting down gracefully","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T11:23:08.557Z"}
+{"level":"info","message":"Database disconnected successfully","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T11:23:08.560Z"}
+{"level":"info","message":"Process terminated","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T11:23:08.561Z"}
+{"level":"info","message":"Database info:","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T11:26:28.887Z"}
+{"level":"info","message":"Database connected successfully","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T11:26:28.909Z"}
+{"level":"info","message":"Server running on port 5000","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T11:26:28.915Z"}
+{"level":"info","message":"Environment: development","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T11:26:28.916Z"}
+{"level":"info","message":"Database info:","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T11:53:58.888Z"}
+{"level":"info","message":"Database connected successfully","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T11:53:59.235Z"}
+{"level":"info","message":"SIGTERM received, shutting down gracefully","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T11:53:59.300Z"}
+{"level":"info","message":"Database disconnected successfully","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T11:53:59.336Z"}
+{"level":"info","message":"Process terminated","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T11:53:59.338Z"}
+{"level":"info","message":"NFT created: cmfnxsb2p00058d0e4tl2pfjw by 0x1234567890abcdef1234567890abcdef12345678","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T12:06:55.253Z"}
+{"level":"info","message":"Listing created: cmfnxsb4k00078d0ey7ffagjv by 0x1234567890abcdef1234567890abcdef12345678","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T12:06:55.391Z"}
+{"level":"info","message":"AI generation job queued for user: 0x1234567890abcdef1234567890abcdef12345678","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T12:06:55.600Z"}
+{"level":"info","message":"Trading strategy created: cmfnxsbev000c8d0eerzh7j6y by 0x1234567890abcdef1234567890abcdef12345678","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T12:06:55.702Z"}
+{"level":"info","message":"Trading strategy updated: cmfnxsbev000c8d0eerzh7j6y by 0x1234567890abcdef1234567890abcdef12345678","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T12:06:55.735Z"}
+{"level":"info","message":"Trading strategy created: cmfnxscw6000h8d0exdaf1pz6 by 0x1234567890abcdef1234567890abcdef12345678","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T12:06:57.611Z"}
+{"level":"info","message":"VibeCoin balance updated for 0x1234567890abcdef1234567890abcdef12345678: add 500","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T12:06:59.698Z"}
+{"level":"info","message":"Database info:","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T12:10:51.892Z"}
+{"level":"info","message":"Database connected successfully","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T12:10:51.896Z"}
+{"level":"info","message":"SIGTERM received, shutting down gracefully","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T12:10:51.908Z"}
+{"level":"info","message":"Database disconnected successfully","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T12:10:51.909Z"}
+{"level":"info","message":"Process terminated","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T12:10:51.910Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T12:20:46.231Z"}
+{"level":"info","message":"Database disconnected successfully","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T12:20:46.236Z"}
+{"level":"info","message":"Process terminated","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T12:20:46.236Z"}
+{"level":"info","message":"Database info:","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T12:24:04.812Z"}
+{"level":"info","message":"Database connected successfully","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T12:24:04.833Z"}
+{"level":"info","message":"Server running on port 5000","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T12:24:04.836Z"}
+{"level":"info","message":"Environment: development","service":"ai-chain-creator-hub-backend","timestamp":"2025-09-17T12:24:04.836Z"}

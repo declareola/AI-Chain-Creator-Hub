@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "redis-server --daemonize no & sleep 2 && concurrently \"cd packages/frontend && HOST=0.0.0.0 npm run dev\" \"cd packages/backend && npm run dev\"",
+    "dev-frontend": "cd packages/frontend && npm run dev",
+    "dev-backend": "redis-server --daemonize no & sleep 2 && cd packages/backend && npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,5 +14,8 @@
   "license": "ISC",
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
 }

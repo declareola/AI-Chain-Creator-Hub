@@ -7,24 +7,33 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import NFTListingCard from '@/components/nft-listing-card';
 import { apiClient, MarketplaceListing } from '@/lib/api';
 import { useAccount } from 'wagmi';
-import { Search, Filter } from 'lucide-react';
+import { Search, Grid, List } from 'lucide-react';
 
 export default function MarketplacePage() {
   const { isConnected } = useAccount();
   const [listings, setListings] = useState<MarketplaceListing[]>([]);
   const [filteredListings, setFilteredListings] = useState<MarketplaceListing[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [sortBy, setSortBy] = useState('newest');
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [purchasingId, setPurchasingId] = useState<string | null>(null);
+
+  const sortOptions = [
+    { value: 'newest', label: 'Newest' },
+    { value: 'oldest', label: 'Oldest' },
+    { value: 'price-low', label: 'Price: Low to High' },
+    { value: 'price-high', label: 'Price: High to Low' }
+  ];
 
   useEffect(() => {
     fetchListings();
   }, []);
 
   useEffect(() => {
-    filterListings();
-  }, [listings, searchTerm]);
+    filterAndSortListings();
+  }, [listings, searchTerm, sortBy]);
 
   const fetchListings = async () => {
     try {
@@ -38,16 +47,31 @@ export default function MarketplacePage() {
     }
   };
 
-  const filterListings = () => {
-    if (!searchTerm) {
-      setFilteredListings(listings);
-      return;
+  const filterAndSortListings = () => {
+    let filtered = listings;
+
+    // Filter by search term
+    if (searchTerm) {
+      filtered = filtered.filter(listing =>
+        listing.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        listing.description.toLowerCase().includes(searchTerm.toLowerCase())
+      );
     }
 
-    const filtered = listings.filter(listing =>
-      listing.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      listing.description.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    // Sort
+    filtered.sort((a, b) => {
+      switch (sortBy) {
+        case 'oldest':
+          return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+        case 'price-low':
+          return a.price - b.price;
+        case 'price-high':
+          return b.price - a.price;
+        default: // newest
+          return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+      }
+    });
+
     setFilteredListings(filtered);
   };
 
@@ -100,10 +124,34 @@ export default function MarketplacePage() {
           </p>
         </div>
 
+        {/* Featured Collections */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle>Featured Collections</CardTitle>
+            <CardDescription>Explore trending NFT collections</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="bg-gradient-to-r from-purple-400 to-pink-400 rounded-lg p-4 text-white">
+                <h3 className="font-bold">Cyberpunk Dreams</h3>
+                <p className="text-sm opacity-90">Futuristic AI art collection</p>
+              </div>
+              <div className="bg-gradient-to-r from-blue-400 to-cyan-400 rounded-lg p-4 text-white">
+                <h3 className="font-bold">Abstract Visions</h3>
+                <p className="text-sm opacity-90">Modern abstract artwork</p>
+              </div>
+              <div className="bg-gradient-to-r from-green-400 to-teal-400 rounded-lg p-4 text-white">
+                <h3 className="font-bold">Nature Reimagined</h3>
+                <p className="text-sm opacity-90">AI-enhanced natural landscapes</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Search and Filters */}
         <Card className="mb-8">
           <CardContent className="p-6">
-            <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex flex-col lg:flex-row gap-4">
               <div className="flex-1 relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                 <Input
@@ -113,10 +161,31 @@ export default function MarketplacePage() {
                   className="pl-10"
                 />
               </div>
-              <Button variant="outline" className="md:w-auto">
-                <Filter className="h-4 w-4 mr-2" />
-                Filters
-              </Button>
+              <div className="flex gap-2">
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="px-3 py-2 border border-gray-300 rounded-md"
+                >
+                  {sortOptions.map(option => (
+                    <option key={option.value} value={option.value}>{option.label}</option>
+                  ))}
+                </select>
+                <div className="flex border border-gray-300 rounded-md">
+                  <button
+                    onClick={() => setViewMode('grid')}
+                    className={`p-2 ${viewMode === 'grid' ? 'bg-gray-100' : ''}`}
+                  >
+                    <Grid className="h-4 w-4" />
+                  </button>
+                  <button
+                    onClick={() => setViewMode('list')}
+                    className={`p-2 ${viewMode === 'list' ? 'bg-gray-100' : ''}`}
+                  >
+                    <List className="h-4 w-4" />
+                  </button>
+                </div>
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -144,7 +213,7 @@ export default function MarketplacePage() {
           </div>
         )}
 
-        {/* NFT Grid */}
+        {/* NFT Grid/List */}
         {!isLoading && (
           <>
             {filteredListings.length === 0 ? (
@@ -160,7 +229,7 @@ export default function MarketplacePage() {
                 <div className="mb-4 text-gray-600">
                   {filteredListings.length} NFT{filteredListings.length !== 1 ? 's' : ''} available
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div className={`grid gap-6 ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : 'grid-cols-1'}`}>
                   {filteredListings.map((listing) => (
                     <NFTListingCard
                       key={listing.id}
